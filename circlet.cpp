@@ -1,27 +1,34 @@
-#include <bits/stdc++.h>
+#include <iostream>
 using namespace std;
 
-int solve(vector<int>& arr) {
-    int result = 0;
+int main() {
+    int n = 4;
 
-    for(int i = 0; i < arr.size(); i++) {
-    result += arr[i]; 
+    for(int i = 1; i <= n; i++) {
+        for(int j = 1; j <= i; j++) {
+            cout << j << " ";
+        }
+        cout << endl;
     }
 
-    return result;
-}
+    return 0;
+};
+
+
+
+
+#include <iostream>
+using namespace std;
 
 int main() {
-    int n;
-    cin >> n;
+    int n = 5;
 
-    vector<int> arr(n);
-
-    for(int i = 0; i < n; i++) {
-        cin >> arr[i];
+    for(int i = 7; i >= n; i--) {
+        for(int j = 1; j <= i; j++) {
+            cout << j << " ";
+        }
+        cout << endl;
     }
-
-    cout << solve(arr);
 
     return 0;
 }
