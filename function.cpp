@@ -41,3 +41,34 @@ int main() {
     display(); 
     return 0;
 };
+
+// nested function
+
+#include <iostream>
+using namespace std;
+
+void anil() {  
+    cout << "I am Anil\n";
+    cout << "I am Anil\n";
+}
+void shyam(){
+    cout << "I am Shayam\n";
+    anil();
+    anil();
+    anil();
+}
+int main(){
+    shyam();
+    return 0;
+};
+
+#include <iostream>
+using namespace std;
+
+void sum(int a, int b){
+    cout << (a+b);
+}
+returntype int main(){
+    cout << "Addition is" << a+b;
+    return 0;
+};
