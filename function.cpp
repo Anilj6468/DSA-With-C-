@@ -1,74 +1,82 @@
-// Take Nothing Return something
-
-#include <iostream>
+#include <iostream>;
 using namespace std;
 
-int sum(int a, int b) {
-    return a + b; 
+float add(float a, float b) {
+    return a + b;
+}
+
+float subtract(float a, float b) {
+    return a - b;
+}
+
+float multiply(float a, float b) {
+    return a * b;
+}
+
+float divide(float a, float b) {
+    if (b == 0) {
+        printf("Error! Division by zero is not allowed.\n");
+        return 0;
+    }
+    return a / b;
+}
+
+int modulus(int a, int b) {
+    if (b == 0) {
+        printf("Error! Modulus by zero is not allowed.\n");
+        return 0;
+    }
+    return a % b;
 }
 
 int main() {
-    int value = sum(3, 6);
-    cout << "Addition is " << value << endl;
+    int choice;
+    float num1, num2;
+    char cont;
+
+    do {
+        printf("\n===== Arithmetic Menu =====\n");
+        printf("1. Addition (+)\n");
+        printf("2. Subtraction (-)\n");
+        printf("3. Multiplication (*)\n");
+        printf("4. Division (/)\n");
+        printf("5. Modulus (%%)\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        printf("Enter two numbers: ");
+        scanf("%f %f", &num1, &num2);
+
+        switch (choice) {
+            case 1:
+                printf("Result = %.2f\n", add(num1, num2));
+                break;
+
+            case 2:
+                printf("Result = %.2f\n", subtract(num1, num2));
+                break;
+
+            case 3:
+                printf("Result = %.2f\n", multiply(num1, num2));
+                break;
+
+            case 4:
+                printf("Result = %.2f\n", divide(num1, num2));
+                break;
+
+            case 5:
+                printf("Result = %d\n", modulus((int)num1, (int)num2));
+                break;
+
+            default:
+                printf("Invalid choice!\n");
+        }
+
+        printf("\nPress 'e' to exit or any other key to continue: ");
+        scanf(" %c", &cont);
+
+    } while (cont != 'e' && cont != 'E');
+
+    printf("Program terminated.\n");
     return 0;
-};
-
-// Take Something Return something
-
-#include <iostream>
-using namespace std;
-
-int sum(int a, int b) {  
-    return a + b;        
 }
-
-int main() {
-    int result = sum(5, 7);  
-    cout << "Sum is: " << result << endl; 
-    return 0;
-};
-
-// Take Nothing Return Nothing
-
-#include <iostream>
-using namespace std;
-
-void display() {  
-    cout << "Hello, C++!" << endl;
-}
-
-int main() {
-    display(); 
-    return 0;
-};
-
-// nested function
-
-#include <iostream>
-using namespace std;
-
-void anil() {  
-    cout << "I am Anil\n";
-    cout << "I am Anil\n";
-}
-void shyam(){
-    cout << "I am Shayam\n";
-    anil();
-    anil();
-    anil();
-}
-int main(){
-    shyam();
-    return 0;
-};
-
-#include <iostream>
-using namespace std;
-
-void sum(int a, int b){
-    cout << (a+b);
-}
-returntype int main(){
-    cout << "Addition is" << a+b;
-    return 0;
-};
