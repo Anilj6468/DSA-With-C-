@@ -17,6 +17,19 @@ int main()
     return 0;
 }
 
+
+float divide(float a, float b, float c)
+{
+    return a / b / c;
+}
+
+int main()
+{
+    float result = divide(1, 2, 5);
+    cout << "Divide is: " << result << endl;
+    return 0;
+}
+
 float add(float a, float b) {
     return a + b;
 }
