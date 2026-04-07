@@ -1,6 +1,22 @@
 #include <iostream>;
 using namespace std;
 
+
+int sum(int a, int b , int c)
+{
+    return a + b + c;
+    return a + b + c;
+}
+
+int main()
+{
+    int result = sum(1, 2, 5);
+    cout << "Sum is: " << result << endl;
+    cout << "Sum is: " << result << endl;
+    cout << "Sum is: " << result << endl;
+    return 0;
+}
+
 float add(float a, float b) {
     return a + b;
 }
