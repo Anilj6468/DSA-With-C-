@@ -1,19 +1,34 @@
+// ============================================================
+//   STUDENT MANAGEMENT SYSTEM — C++ CLASS TEMPLATE
+//   Features: Add, Display, Remove, Search + Memory Calc
+// ============================================================
+
+#include <iostream>
 #include <vector>
 #include <string>
+#include <iomanip>
+#include <algorithm>
+
 using namespace std;
+
+// ──────────────────────────────────────────────
+//  CLASS TEMPLATE: Student
+// ──────────────────────────────────────────────
 class Student {
 private:
     int    id;
     string name;
 
 public:
+    // ── Constructor to Initialize id and name ──
     Student(int studentId, string studentName)
         : id(studentId), name(studentName) {}
 
+    // ── Getters ──
     int    getId()   const { return id;   }
     string getName() const { return name; }
 
-    
+    // ── Method: Display Student Details ──
     void displayDetails() const {
         cout << "  | ID   : " << id   << endl;
         cout << "  | Name : " << name << endl;
@@ -22,18 +37,21 @@ public:
         cout << "  +------------------------------" << endl;
     }
 
-    
+    // ── Memory size of this object ──
     size_t getMemorySize() const {
         return sizeof(*this) + name.capacity();
     }
 };
 
 
+// ──────────────────────────────────────────────
+//  CLASS TEMPLATE: StudentManager
+// ──────────────────────────────────────────────
 class StudentManager {
 private:
-    vector<Student> students;  
+    vector<Student> students;   // Vector to hold all students
 
-    
+    // ── Helper: Calculate total memory used ──
     void showMemoryInfo() const {
         size_t totalMem = sizeof(students);
         for (const auto& s : students)
@@ -47,8 +65,9 @@ private:
     }
 
 public:
+    // ── TASK 1: Add a Student using push_back() ──
     void addStudent(int id, const string& name) {
-    
+        // Check for duplicate ID
         for (const auto& s : students) {
             if (s.getId() == id) {
                 cout << "\n  [ERROR] Student with ID " << id
@@ -56,12 +75,13 @@ public:
                 return;
             }
         }
-        students.push_back(Student(id, name));  
+        students.push_back(Student(id, name));   // push_back()
         cout << "\n  [SUCCESS] Student \"" << name
              << "\" (ID: " << id << ") added successfully." << endl;
         showMemoryInfo();
     }
 
+    // ── TASK 2: Display All Students ──
     void displayAll() const {
         if (students.empty()) {
             cout << "\n  [INFO] No students in the list.\n" << endl;
@@ -75,6 +95,7 @@ public:
             s.displayDetails();
         }
 
+        // Memory summary
         size_t totalMem = sizeof(students);
         for (const auto& s : students)
             totalMem += s.getMemorySize();
@@ -82,6 +103,7 @@ public:
              << totalMem << " bytes\n" << endl;
     }
 
+    // ── TASK 3: Remove a Student by ID ──
     void removeById(int id) {
         auto it = find_if(students.begin(), students.end(),
             [id](const Student& s) { return s.getId() == id; });
@@ -97,6 +119,7 @@ public:
         }
     }
 
+    // ── TASK 4: Search for a Student by ID ──
     void searchById(int id) const {
         cout << "\n  [SEARCH] Looking for ID: " << id << " ..." << endl;
         for (const auto& s : students) {
@@ -110,6 +133,7 @@ public:
         cout << "  [NOT FOUND] No student with ID " << id << endl;
     }
 
+    // ── BONUS: Search by Name ──
     void searchByName(const string& name) const {
         cout << "\n  [SEARCH] Looking for name: \"" << name << "\" ..." << endl;
         bool found = false;
@@ -129,6 +153,9 @@ public:
 };
 
 
+// ──────────────────────────────────────────────
+//  MENU-DRIVEN MAIN FUNCTION
+// ──────────────────────────────────────────────
 int main() {
     StudentManager manager;
     int choice;
@@ -149,11 +176,11 @@ int main() {
         cout << "  ──────────────────────────────────" << endl;
         cout << "  Enter your choice: ";
         cin  >> choice;
-        cin.ignore();  
+        cin.ignore();  // clear newline from buffer
 
         switch (choice) {
 
-            case 1: {  
+            case 1: {   // ADD STUDENT
                 int    id;
                 string name;
                 cout << "\n  Enter Student ID   : ";
@@ -165,11 +192,11 @@ int main() {
                 break;
             }
 
-            case 2:   
+            case 2:     // DISPLAY ALL
                 manager.displayAll();
                 break;
 
-            case 3: {  
+            case 3: {   // REMOVE BY ID
                 int id;
                 cout << "\n  Enter Student ID to remove: ";
                 cin  >> id;
@@ -177,7 +204,7 @@ int main() {
                 break;
             }
 
-            case 4: {  
+            case 4: {   // SEARCH BY ID
                 int id;
                 cout << "\n  Enter Student ID to search: ";
                 cin  >> id;
@@ -185,7 +212,7 @@ int main() {
                 break;
             }
 
-            case 5: {  
+            case 5: {   // SEARCH BY NAME
                 string name;
                 cin.ignore();
                 cout << "\n  Enter Student Name to search: ";
@@ -206,3 +233,14 @@ int main() {
 
     return 0;
 }
+
+// ============================================================
+//  HOW TO COMPILE & RUN:
+//
+//  Step 1 — Compile:
+//     g++ -std=c++17 -o student_management student_management.cpp
+//
+//  Step 2 — Run:
+//     ./student_management          (Linux/Mac)
+//     student_management.exe        (Windows)
+// ============================================================
