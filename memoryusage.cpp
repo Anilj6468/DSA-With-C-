@@ -6,7 +6,7 @@ class Student {
 private:
     int id;
     string name;
-
+    
 public:
 
     Student(int i, string n) {
