@@ -1,13 +1,6 @@
-2:47 PM
-Done
-2:51 PM
-Madem aaj itna hi
-
-Sarika Talaviya
-2:56 PM
 #include <iostream>
 using namespace std;
-#define MAX 5
+#define MAX 5   
 class Queue
 {
 private:
@@ -183,5 +176,4 @@ main()
         }
 
     } while (choice != 0);
-}
-xax-vfdd-hvk
+};

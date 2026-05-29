@@ -28,6 +28,9 @@ main()
     }
 }
 
+
+
+
 #include <iostream>
 using namespace std;
 int linearSearch(int n,int arr[],int target){
@@ -54,6 +57,10 @@ int main() {
 
     return 0;
 }
+
+
+
+
 
 #include <iostream>
 using namespace std;
